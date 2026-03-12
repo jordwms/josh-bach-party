@@ -111,12 +111,21 @@
     text-decoration: none;
     transition: border-color 0.2s, background 0.2s;
   }
-  .rental-card:hover { background: var(--card-hover); border-color: var(--amber-dim); }
+  .rental-card:hover { background: var(--card-hover); border-left-color: var(--amber); }
   .rental-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
   .rental-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; }
-  .rental-name { font-weight: 600; font-size: 16px; color: var(--cream); margin-bottom: 2px; }
-  .rental-detail { font-size: 13px; color: var(--muted); }
-  .rental-link { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--blue); text-decoration: none; letter-spacing: 0.1em; margin-top: 6px; display: inline-block; }
+  .rental-name { font-weight: 600; font-size: 16px; color: var(--cream); margin-bottom: 6px; }
+  .rental-address {
+    font-size: 13px; color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--amber-dim);
+    transition: color 0.15s, border-color 0.15s;
+    display: inline;
+  }
+  .rental-address:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .rental-detail { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .rental-actions { display: flex; align-items: center; gap: 16px; margin-top: 10px; }
+  .rental-link { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--blue); text-decoration: none; letter-spacing: 0.1em; }
   .rental-link:hover { text-decoration: underline; }
 
   /* ─── DAY SECTION ─── */
@@ -190,6 +199,35 @@
     background: var(--reservation);
     border: 1px solid var(--reservation-border);
     border-radius: 4px; padding: 2px 8px; white-space: nowrap; flex-shrink: 0;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+    position: relative;
+  }
+  .reservation-badge:hover {
+    background: rgba(90,142,200,0.22);
+    border-color: rgba(90,142,200,0.65);
+    color: #8ab8f0;
+    transform: translateY(-1px);
+  }
+  .reservation-badge:active { transform: translateY(0); }
+  .reservation-badge::after {
+    content: ' ↓';
+    opacity: 0.6;
+    font-size: 9px;
+  }
+
+  /* Toast notification */
+  .cal-toast {
+    position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(60px);
+    background: #1e2a1e; border: 1px solid var(--green); border-radius: 8px;
+    color: var(--cream); font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.08em; padding: 10px 20px; z-index: 9999;
+    opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none; white-space: nowrap;
+  }
+  .cal-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
   }
 
   /* ─── BLOCK BODY ─── */
@@ -307,15 +345,18 @@
   </header>
 
   <!-- RENTAL -->
-  <a class="rental-card" href="https://www.airbnb.com/rooms/667533312264832534" target="_blank" rel="noopener">
+  <div class="rental-card">
     <div class="rental-icon">🏡</div>
     <div>
       <div class="rental-label">Home Base</div>
       <div class="rental-name">Rustic Legacy Ranch – Texas Hill Country</div>
-      <div class="rental-detail">4607 R O Dr, Spicewood, TX 78669 &nbsp;·&nbsp; 16 beds · 9 people · Pool · Stocked bar</div>
-      <div class="rental-link">View on Airbnb ↗</div>
+      <a class="rental-address" href="https://maps.apple.com/?address=4607+RO+Dr,+Spicewood,+TX+78669" target="_blank" rel="noopener">4607 R O Dr, Spicewood, TX 78669</a>
+      <div class="rental-detail">Hill Country views &nbsp;·&nbsp; Pool &nbsp;·&nbsp; 9 people &nbsp;·&nbsp; Tons of space</div>
+      <div class="rental-actions">
+        <a class="rental-link" href="https://www.airbnb.com/rooms/667533312264832534" target="_blank" rel="noopener">View on Airbnb ↗</a>
+      </div>
     </div>
-  </a>
+  </div>
 
   <!-- ═══ THURSDAY ═══ -->
   <div class="day">
@@ -330,7 +371,15 @@
         <summary class="block-toggle">
           <span class="block-time">6:00 – 8:30p</span>
           <span class="block-label">⛳ Topgolf Austin</span>
-          <span class="reservation-badge">📅 Reservation</span>
+          <span class="reservation-badge"
+            data-title="Topgolf Austin – Josh's Bachelor Party"
+            data-start="20260326T180000"
+            data-end="20260326T203000"
+            data-location="2700 Esperanza Crossing, Austin, TX 78758"
+            data-url="https://topgolf.com/us/austin/"
+            data-description="Reserved 6–8:30p. Casual food, drinks & games to kick things off.\n\nMore info: https://topgolf.com/us/austin/"
+            title="Click to add to calendar"
+          >📅 Reservation</span>
           <svg class="block-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </summary>
         <div class="block-body">
@@ -409,7 +458,15 @@
         <summary class="block-toggle">
           <span class="block-time">12:30 – 3:30p</span>
           <span class="block-label">⛳ Golf at Falconhead Golf Club</span>
-          <span class="reservation-badge">📅 Reservation</span>
+          <span class="reservation-badge"
+            data-title="Falconhead Golf Club – Josh's Bachelor Party"
+            data-start="20260327T123000"
+            data-end="20260327T153000"
+            data-location="15201 Falconhead Blvd, Bee Cave, TX 78738"
+            data-url="https://www.falconheadaustin.com/"
+            data-description="Tee time 12:30p – leave the house around 11:30a. Top public course in the Austin area.\n\nMore info: https://www.falconheadaustin.com/"
+            title="Click to add to calendar"
+          >📅 Reservation</span>
           <svg class="block-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </summary>
         <div class="block-body">
@@ -492,7 +549,15 @@
         <summary class="block-toggle">
           <span class="block-time">12:00 – 3:00p</span>
           <span class="block-label">⛵ Booze Cruise – Lake Travis</span>
-          <span class="reservation-badge">📅 Reservation</span>
+          <span class="reservation-badge"
+            data-title="Float On Boat Rentals – Josh's Bachelor Party"
+            data-start="20260328T120000"
+            data-end="20260328T150000"
+            data-location="6900 Comanche Trail, Austin, TX 78732"
+            data-url="https://rentalboataustin.com/"
+            data-description="3-hour cruise on Lake Travis – float and drink.\n\nMore info: https://rentalboataustin.com/"
+            title="Click to add to calendar"
+          >📅 Reservation</span>
           <svg class="block-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </summary>
         <div class="block-body">
@@ -522,7 +587,15 @@
         <summary class="block-toggle">
           <span class="block-time">6:15p</span>
           <span class="block-label">🥩 Final Send-Off Dinner</span>
-          <span class="reservation-badge">📅 Reservation</span>
+          <span class="reservation-badge"
+            data-title="Steiner Ranch Steakhouse – Josh's Bachelor Party"
+            data-start="20260328T181500"
+            data-end="20260328T203000"
+            data-location="5424 Steiner Ranch Blvd, Austin, TX 78732"
+            data-url="https://www.yelp.com/biz/steiner-ranch-steakhouse-austin"
+            data-description="Final send-off dinner. Elevated Texas steakhouse with Hill Country lake views.\n\nMore info: https://www.yelp.com/biz/steiner-ranch-steakhouse-austin"
+            title="Click to add to calendar"
+          >📅 Reservation</span>
           <svg class="block-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </summary>
         <div class="block-body">
@@ -672,5 +745,85 @@
   </div>
 
 </div>
+<div class="cal-toast" id="calToast">✅ Calendar invite downloaded!</div>
+
+<script>
+  function generateICS(data) {
+    const uid = data.start + '-' + data.title.replace(/[^a-zA-Z0-9]/g, '') + '@joshbachelor2026';
+    const description = data.description.replace(/\n/g, '\\n').replace(/,/g, '\\,');
+    const lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Josh Bachelor Party Austin 2026//EN',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'BEGIN:VTIMEZONE',
+      'TZID:America/Chicago',
+      'BEGIN:DAYLIGHT',
+      'TZOFFSETFROM:-0600',
+      'TZOFFSETTO:-0500',
+      'TZNAME:CDT',
+      'DTSTART:19700308T020000',
+      'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU',
+      'END:DAYLIGHT',
+      'BEGIN:STANDARD',
+      'TZOFFSETFROM:-0500',
+      'TZOFFSETTO:-0600',
+      'TZNAME:CST',
+      'DTSTART:19701101T020000',
+      'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU',
+      'END:STANDARD',
+      'END:VTIMEZONE',
+      'BEGIN:VEVENT',
+      'DTSTART;TZID=America/Chicago:' + data.start,
+      'DTEND;TZID=America/Chicago:' + data.end,
+      'SUMMARY:' + data.title.replace(/,/g, '\\,'),
+      'LOCATION:' + data.location.replace(/,/g, '\\,'),
+      'DESCRIPTION:' + description,
+      'URL:' + data.url,
+      'UID:' + uid,
+      'STATUS:CONFIRMED',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ];
+    return lines.join('\r\n');
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('calToast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
+  document.querySelectorAll('.reservation-badge[data-title]').forEach(function(badge) {
+    badge.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const data = {
+        title:       badge.dataset.title,
+        start:       badge.dataset.start,
+        end:         badge.dataset.end,
+        location:    badge.dataset.location,
+        url:         badge.dataset.url,
+        description: badge.dataset.description
+      };
+
+      const icsContent = generateICS(data);
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = data.title.replace(/[^a-zA-Z0-9]+/g, '_') + '.ics';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+      showToast('📅 "' + data.title.split('–')[0].trim() + '" added to calendar!');
+    });
+  });
+</script>
 </body>
 </html>
