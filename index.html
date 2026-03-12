@@ -221,6 +221,22 @@
   .venue-dot.alt { background: var(--muted); }
   .venue-dot.opt { background: var(--green); }
 
+  /* Child venue items – visually nested under a parent district */
+  .venue.venue-child {
+    margin-left: 20px;
+    padding: 5px 10px;
+    font-size: 13px;
+    background: rgba(255,255,255,0.015);
+    border-left: 2px solid var(--border);
+    border-radius: 0 6px 6px 0;
+  }
+  a.venue.venue-child:hover {
+    border-left-color: var(--amber-dim);
+    background: var(--amber-glow);
+    border-color: var(--amber-dim);
+  }
+  .venue.venue-child .venue-dot.alt { background: var(--border-hover); }
+
   .venue-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
   .venue-name { line-height: 1.4; }
   .venue-sub { font-size: 12px; color: var(--muted); font-style: italic; }
@@ -257,6 +273,8 @@
   }
   .option-header.a { color: var(--amber); border-bottom: 1px solid var(--border); }
   .option-header.b { color: var(--blue); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .option-header.c { color: var(--green); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .district-divider { height: 1px; background: var(--border); margin: 4px 0; }
   .option-venues { padding: 8px 12px; display: flex; flex-direction: column; gap: 6px; }
 
   /* ─── FOOTER ─── */
@@ -330,48 +348,26 @@
       <details class="block">
         <summary class="block-toggle">
           <span class="block-time">Night</span>
-          <span class="block-label">🍺 Bar Crawl – Pick Your Adventure</span>
+          <span class="block-label">🌃 Rock Rose – Upscale Nightlife</span>
           <svg class="block-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </summary>
         <div class="block-body">
-          <div class="option-group">
-            <div class="option-header a">Option A — Rainey Street &nbsp;·&nbsp; Chill Vibes &amp; Outdoor Patios</div>
-            <div class="option-venues">
-              <a class="venue" href="https://www.yelp.com/biz/bangers-sausage-house-and-beer-garden-austin" target="_blank" rel="noopener">
-                <div class="venue-dot opt"></div>
-                <div class="venue-info"><span class="venue-name">Banger's Sausage House &amp; Beer Garden</span></div>
-                <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a class="venue" href="https://www.yelp.com/biz/lustre-pearl-austin" target="_blank" rel="noopener">
-                <div class="venue-dot opt"></div>
-                <div class="venue-info"><span class="venue-name">Lustre Pearl</span></div>
-                <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a class="venue" href="https://www.yelp.com/biz/clive-bar-austin" target="_blank" rel="noopener">
-                <div class="venue-dot opt"></div>
-                <div class="venue-info"><span class="venue-name">Clive Bar</span></div>
-                <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-            <div class="option-header b">Option B — Rock Rose &nbsp;·&nbsp; Upscale Nightlife, North Austin</div>
-            <div class="option-venues">
-              <a class="venue" href="https://kungfusaloon.com/" target="_blank" rel="noopener">
-                <div class="venue-dot"></div>
-                <div class="venue-info"><span class="venue-name">Kung Fu Saloon</span></div>
-                <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a class="venue" href="https://www.jackandgingers.pub/" target="_blank" rel="noopener">
-                <div class="venue-dot"></div>
-                <div class="venue-info"><span class="venue-name">Jack &amp; Ginger's</span></div>
-                <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a class="venue" href="https://www.77-degrees.com/" target="_blank" rel="noopener">
-                <div class="venue-dot"></div>
-                <div class="venue-info"><span class="venue-name">77 Degrees</span></div>
-                <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-          </div>
+          <p class="note">Upscale nightlife in North Austin – outdoor patios and good vibes.</p>
+          <a class="venue" href="https://kungfusaloon.com/" target="_blank" rel="noopener">
+            <div class="venue-dot"></div>
+            <div class="venue-info"><span class="venue-name">Kung Fu Saloon</span></div>
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a class="venue" href="https://www.jackandgingers.pub/" target="_blank" rel="noopener">
+            <div class="venue-dot"></div>
+            <div class="venue-info"><span class="venue-name">Jack &amp; Ginger's</span></div>
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a class="venue" href="https://www.77-degrees.com/" target="_blank" rel="noopener">
+            <div class="venue-dot"></div>
+            <div class="venue-info"><span class="venue-name">77 Degrees</span></div>
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
         </div>
       </details>
 
@@ -401,18 +397,11 @@
       <details class="block">
         <summary class="block-toggle">
           <span class="block-time">Morning</span>
-          <span class="block-label">🌮 Breakfast Tacos</span>
+          <span class="block-label">🍳 Breakfast at the Ranch</span>
           <svg class="block-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </summary>
         <div class="block-body">
-          <a class="venue" href="https://www.yelp.com/biz/juan-in-a-million-austin" target="_blank" rel="noopener">
-            <div class="venue-dot"></div>
-            <div class="venue-info">
-              <span class="venue-name">Juan in a Million</span>
-              <span class="venue-sub">Austin legend – giant breakfast tacos before tee-off</span>
-            </div>
-            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+          <p class="note">Stocked kitchen with fridge &amp; freezer breakfasts, coffee, and everything you need – no going out required.</p>
         </div>
       </details>
 
@@ -431,26 +420,6 @@
               <span class="venue-name">Falconhead Golf Club</span>
               <span class="venue-sub">Top public course in the Austin area</span>
             </div>
-            <span class="venue-tag">Main Plan</span>
-            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-          <div class="section-label">If you aren't golfing – alternatives</div>
-          <a class="venue" href="https://www.urbanaxes.com/location/austin" target="_blank" rel="noopener">
-            <div class="venue-dot alt"></div>
-            <div class="venue-info"><span class="venue-name">Urban Axes Austin</span></div>
-            <span class="venue-tag alt-tag">Alt</span>
-            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-          <a class="venue" href="https://www.yelp.com/biz/zilker-brewing-company-and-taproom-austin" target="_blank" rel="noopener">
-            <div class="venue-dot alt"></div>
-            <div class="venue-info"><span class="venue-name">Zilker Brewing Co.</span></div>
-            <span class="venue-tag alt-tag">Alt</span>
-            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-          <a class="venue" href="https://www.yelp.com/biz/austin-beerworks-austin" target="_blank" rel="noopener">
-            <div class="venue-dot alt"></div>
-            <div class="venue-info"><span class="venue-name">Austin Beerworks</span></div>
-            <span class="venue-tag alt-tag">Alt</span>
             <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
         </div>
@@ -583,37 +552,81 @@
             </div>
             <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
-          <div class="section-label">Late Night Bar Crawl Districts</div>
+          <div class="section-label">Late night bar crawl districts</div>
+
           <a class="venue" href="https://www.google.com/maps/place/austin+tx+6th+street+district/data=!4m2!3m1!1s0x8644b5a651f02f6f:0x5e047ec77ab6bec4?sa=X&ved=1t:155783&ictx=111" target="_blank" rel="noopener">
-            <div class="venue-dot"></div>
+            <div class="venue-dot opt"></div>
             <div class="venue-info">
               <span class="venue-name">6th Street District</span>
-              <span class="venue-sub">Rowdy nightlife – the classic Austin strip</span>
+              <span class="venue-sub">Closed to traffic on weekends – open containers, live music, and wall-to-wall bars</span>
             </div>
             <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
+          <a class="venue venue-child" href="https://www.yelp.com/biz/midnight-cowboy-austin" target="_blank" rel="noopener">
+            <div class="venue-dot alt"></div>
+            <div class="venue-info"><span class="venue-name">Midnight Cowboy</span></div>
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a class="venue venue-child" href="https://www.yelp.com/biz/blind-pig-pub-austin" target="_blank" rel="noopener">
+            <div class="venue-dot alt"></div>
+            <div class="venue-info"><span class="venue-name">The Blind Pig Pub</span></div>
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a class="venue venue-child" href="https://www.yelp.com/biz/maggie-maes-austin" target="_blank" rel="noopener">
+            <div class="venue-dot alt"></div>
+            <div class="venue-info"><span class="venue-name">Maggie Mae's</span></div>
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+
+          <div class="district-divider"></div>
+
           <a class="venue" href="https://www.google.com/maps/place/austin+tx+red+river+district/data=!4m2!3m1!1s0x8644b5a68651259b:0xf507b5bd5fe45924?sa=X&ved=1t:155783&ictx=111" target="_blank" rel="noopener">
-            <div class="venue-dot"></div>
+            <div class="venue-dot opt"></div>
             <div class="venue-info">
               <span class="venue-name">Red River District</span>
-              <span class="venue-sub">Live music venues &amp; dive bars</span>
+              <span class="venue-sub">Austin's live music cultural district – concert venues, touring acts, and serious stages</span>
             </div>
             <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
-          <a class="venue" href="https://6street.com/listing-region/red-river/" target="_blank" rel="noopener">
+          <a class="venue venue-child" href="https://www.yelp.com/biz/mohawk-austin" target="_blank" rel="noopener">
             <div class="venue-dot alt"></div>
-            <div class="venue-info">
-              <span class="venue-name">Browse all Red River venues</span>
-              <span class="venue-sub">Full listing of bars &amp; clubs in the district</span>
-            </div>
+            <div class="venue-info"><span class="venue-name">Mohawk</span></div>
             <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
+          <a class="venue venue-child" href="https://www.yelp.com/biz/empire-control-room-and-garage-austin" target="_blank" rel="noopener">
+            <div class="venue-dot alt"></div>
+            <div class="venue-info"><span class="venue-name">Empire Control Room &amp; Garage</span></div>
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a class="venue venue-child" href="https://www.yelp.com/biz/elysium-austin" target="_blank" rel="noopener">
+            <div class="venue-dot alt"></div>
+            <div class="venue-info"><span class="venue-name">Elysium</span></div>
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+
+          <div class="district-divider"></div>
+
           <a class="venue" href="https://www.google.com/maps/place/austin+tx+rainey+street+district/data=!4m2!3m1!1s0x8644b5abcadb07f3:0x681f0779dd73246f?sa=X&ved=1t:155783&ictx=111" target="_blank" rel="noopener">
-            <div class="venue-dot"></div>
+            <div class="venue-dot opt"></div>
             <div class="venue-info">
               <span class="venue-name">Rainey Street District</span>
-              <span class="venue-sub">Bungalow bars &amp; patios – good for a nightcap</span>
+              <span class="venue-sub">Historic bungalows turned bars – relaxed patios, craft cocktails, and food trucks</span>
             </div>
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a class="venue venue-child" href="https://www.yelp.com/biz/bangers-sausage-house-and-beer-garden-austin" target="_blank" rel="noopener">
+            <div class="venue-dot alt"></div>
+            <div class="venue-info"><span class="venue-name">Banger's Sausage House &amp; Beer Garden</span></div>
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a class="venue venue-child" href="https://www.yelp.com/biz/lustre-pearl-austin" target="_blank" rel="noopener">
+            <div class="venue-dot alt"></div>
+            <div class="venue-info"><span class="venue-name">Lustre Pearl</span></div>
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a class="venue venue-child" href="https://www.yelp.com/biz/clive-bar-austin" target="_blank" rel="noopener">
+            <div class="venue-dot alt"></div>
+            <div class="venue-info"><span class="venue-name">Clive Bar</span></div>
             <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
         </div>
@@ -634,27 +647,18 @@
       <details class="block" open>
         <summary class="block-toggle">
           <span class="block-time">Morning</span>
-          <span class="block-label">☕ Brunch Before the Flight</span>
+          <span class="block-label">✈️ Fly Out</span>
           <svg class="block-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </summary>
         <div class="block-body">
-          <a class="venue" href="https://www.yelp.com/biz/bouldin-creek-cafe-austin" target="_blank" rel="noopener">
+          <div class="venue">
             <div class="venue-dot"></div>
             <div class="venue-info">
-              <span class="venue-name">Bouldin Creek Café</span>
-              <span class="venue-sub">Beloved Austin vegetarian café</span>
+              <span class="venue-name">Rental van departs for the airport</span>
+              <span class="venue-sub">10:30a – don't be late</span>
             </div>
-            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-          <a class="venue" href="https://www.yelp.com/biz/franklin-barbecue-austin" target="_blank" rel="noopener">
-            <div class="venue-dot"></div>
-            <div class="venue-info">
-              <span class="venue-name">Franklin Barbecue</span>
-              <span class="venue-sub">World-famous BBQ – worth the wait if you have time</span>
-            </div>
-            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-          <p class="note">Then fly out – safe travels everyone ✈️</p>
+          </div>
+          <p class="note">Safe travels everyone – it's been a hell of a weekend.</p>
         </div>
       </details>
 
@@ -663,7 +667,7 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    <div class="footer-cheers">🥂 Cheers to Josh!</div>
+    <div class="footer-cheers">🥃 Cheers to Josh!</div>
     <p class="footer-sub">Austin, TX &nbsp;·&nbsp; March 2026 &nbsp;·&nbsp; We love you, brother</p>
   </div>
 
